@@ -25,12 +25,12 @@ export class WeatherRepository {
     }
   }
 
-  async create(clima: string, graus: string): Promise<any> {
+  async create(clima: string, graus: string, cidade: String): Promise<any> {
     const client = await this.pool.connect();
     try {
       const result = await client.query(
-        'INSERT INTO registros (clima, graus) VALUES ($1, $2) RETURNING *',
-        [clima, graus],
+        'INSERT INTO registros (clima, graus, cidade) VALUES ($1, $2, $3) RETURNING *',
+        [clima, graus, cidade],
       );
       return result.rows[0];
     } finally {

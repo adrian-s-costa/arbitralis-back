@@ -1,12 +1,13 @@
-import { Controller, Get } from '@nestjs/common';
+import { Controller, Get, Param } from '@nestjs/common';
 import { WeatherService } from './weather.service';
 
 @Controller()
 export class WeatherController {
   constructor(private readonly weatherService: WeatherService) {}
 
-  @Get('/weather')
-  async getWeather() {
-    return await this.weatherService.getWeather();
+  @Get('/weather/:city')
+  async getWeather(@Param('city') city: String) {
+    const cityWeather = await this.weatherService.getWeather(city);
+    return cityWeather;
   }
 }
