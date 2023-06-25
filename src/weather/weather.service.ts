@@ -4,7 +4,6 @@ import { WeatherRepository } from './weather.repository';
 
 let lat: any, lng: any, clima: any, graus: any, cidade: any;
 
-
 @Injectable()
 export class WeatherService {
   constructor(private readonly weatherRepository: WeatherRepository) {}
