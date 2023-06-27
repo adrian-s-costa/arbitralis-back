@@ -7,7 +7,7 @@ import { UserRepository } from './user.repository';
 @Module({
   imports: [ PostgresModule ],
   controllers: [ UserController ],
-  providers: [ UserService, UserRepository ],
+  providers: [ UserService, UserRepository],
 })
 
 export class UserModule {}

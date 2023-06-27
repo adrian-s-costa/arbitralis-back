@@ -15,4 +15,16 @@ export class UserRepository {
       client.release();
     }
   }
+
+  async insertUser(email: string, password: string, profile_pic: string){
+    const client = await this.pool.connect();
+    try {
+      await client.query(
+        'INSERT INTO users (email, password, profile_pic) VALUES ($1, $2, $3) RETURNING *',
+        [email, password, profile_pic],
+      );
+    } finally {
+      client.release();
+    }
+  }
 }

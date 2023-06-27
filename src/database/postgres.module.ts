@@ -1,6 +1,10 @@
 import { Module } from '@nestjs/common';
 import { Pool } from 'pg';
 
+const pgUser = process.env.PG_USER;
+const dbPassword = process.env.PG_PASSWORD;
+const dbDatabase = process.env.PG_DATABASE;
+
 @Module({
   providers: [
     {
