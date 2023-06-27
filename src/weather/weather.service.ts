@@ -1,12 +1,19 @@
 import { Injectable, OnApplicationBootstrap } from '@nestjs/common';
 import axios from 'axios';
 import { WeatherRepository } from './weather.repository';
+import { ConfigService } from '@nestjs/config';
 
 let clima: any, graus: any, cidade: any, icon: any;
 
+const openWeatherApiKey = "744e9bd530130dda6f010c9d2f151042"
+
 @Injectable()
 export class WeatherService implements OnApplicationBootstrap{
-  constructor(private readonly weatherRepository: WeatherRepository) {}
+  constructor(
+    private readonly weatherRepository: WeatherRepository,
+    private configService: ConfigService
+    ) {}
+
   async onApplicationBootstrap() {
     await this.updateWeatherPeriodically();
   }
@@ -28,13 +35,16 @@ export class WeatherService implements OnApplicationBootstrap{
   async getWeatherDataFromAPI() {
     const weatherRecords = await this.weatherRepository.getWeatherRecordsFromDatabase();
     const updatedWeatherData = [];
-    
+
     for (const record of weatherRecords) {
       const { lat, lng, address, userId, id } = record;
 
       try {
+
+        const api = this.configService.get<string>('OPEN_WEATHER_API_KEY');
+        
         const response = await axios.get(
-          `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lng}&appid=744e9bd530130dda6f010c9d2f151042&lang=pt&units=metric`,
+          `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lng}&appid=${api}&lang=pt&units=metric`,
         );
 
         const clima = response.data.weather[0].description;
@@ -61,7 +71,8 @@ export class WeatherService implements OnApplicationBootstrap{
   }
 
   async getWeather(lat: String, lng: String, address: String, userId: number) {
-    await axios.get(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lng}&appid=744e9bd530130dda6f010c9d2f151042&lang=pt&units=metric`)
+    const api = this.configService.get<string>('OPEN_WEATHER_API_KEY');
+    await axios.get(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lng}&appid=${api}&lang=pt&units=metric`)
       .then((res)=>{
         clima = res.data.weather[0].description;
         graus = Math.round(res.data.main.temp) + "°C";

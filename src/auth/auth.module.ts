@@ -6,11 +6,13 @@ import { AuthController } from './auth.controller';
 import { jwtConstants } from './constants';
 import { UserRepository } from 'src/user/user.repository';
 import { PostgresModule } from 'src/database/postgres.module';
+import { ConfigModule } from '@nestjs/config';
 
 @Module({
   imports: [
     PostgresModule,
     UserModule,
+    ConfigModule.forRoot(),
     JwtModule.register({
       global: true,
       secret: jwtConstants.secret,
