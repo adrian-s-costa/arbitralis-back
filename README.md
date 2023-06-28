@@ -20,12 +20,12 @@ Este repositório contém o back-end da API de clima/tempo desenvolvida para o t
 ```bash
 ~$ git clone https://github.com/adrian-s-costa/arbitralis-back.git
 ```
-3. Dentro do diretório onde o repositório foi clonado, instale as dependências
+2. Dentro do diretório onde o repositório foi clonado, instale as dependências
 ```bash
 ~$ npm i
 ```
-4. Recrie o banco de dados em sua máquina através do arquivo `arbitrales-dump.sql`
-5. Crie um aquivo `.env` na raíz do projeto e o configure de acordo com suas particularidades seguindo o padrão do `.env.example` para os nomes das variáveis de ambiente
+3. Recrie o banco de dados em sua máquina através do arquivo `arbitrales-dump.sql` <br/>
+4. Crie um aquivo `.env` na raíz do projeto e o configure de acordo com suas particularidades seguindo o padrão do `.env.example` para os nomes das variáveis de ambiente 
 ```bash
   PORT=porta_em_que_API_vai_rodar
   JWT_SECRET=qualquer_valor_server
@@ -34,12 +34,13 @@ Este repositório contém o back-end da API de clima/tempo desenvolvida para o t
   PG_PASSWORD=senha_dessa_conta_acima
   PG_DATABASE=nome_do_banco
 ```
-As chaves de API podem ser replicadas tranquilamente, foram expostas a fim de diminuir a complexidade de rodar o projeto 
-6. Execute o comando `npm run start`
+As chaves de API podem ser replicadas tranquilamente, foram expostas a fim de diminuir a complexidade de rodar o projeto <br/>
+<br/>
+5. Execute o comando `npm run start`
 ```bash
 ~$ npm run start
 ```
-Pronto! A API estará rodando em `http://localhost:[PORTA-ESCOLHIDA]` 😊 
+Pronto! API estará rodando em `http://localhost:[PORTA-ESCOLHIDA]` 😊 <br/>
 (Não esqueça que essa URL que precisa ser colocada no config.js do front)
 
 # Licença
