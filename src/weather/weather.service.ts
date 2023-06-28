@@ -3,9 +3,7 @@ import axios from 'axios';
 import { WeatherRepository } from './weather.repository';
 import { ConfigService } from '@nestjs/config';
 
-let clima: any, graus: any, cidade: any, icon: any;
-
-const openWeatherApiKey = "744e9bd530130dda6f010c9d2f151042"
+let clima: any, graus: any, cidade: any, icon: any, umidade: any;
 
 @Injectable()
 export class WeatherService implements OnApplicationBootstrap{
@@ -50,6 +48,7 @@ export class WeatherService implements OnApplicationBootstrap{
         const clima = response.data.weather[0].description;
         const graus = Math.round(response.data.main.temp) + '°C';
         const icon = response.data.weather[0].icon;
+        const umidade = response.data.main.humidity + "% de umidade";
 
         const updatedData = {
           id,
@@ -60,6 +59,7 @@ export class WeatherService implements OnApplicationBootstrap{
           userId,
           lat,
           lng,
+          umidade
         };
 
         updatedWeatherData.push(updatedData);
@@ -78,11 +78,12 @@ export class WeatherService implements OnApplicationBootstrap{
         graus = Math.round(res.data.main.temp) + "°C";
         icon = res.data.weather[0].icon;
         cidade = address;
+        umidade = res.data.main.humidity + "% de humidade";
       })
       .catch((err)=>{
         console.log(err);
       })
-    const dbResponse = await this.weatherRepository.create(clima, graus, cidade, userId, icon, lat, lng);
+    const dbResponse = await this.weatherRepository.create(clima, graus, cidade, userId, icon, lat, lng, umidade);
     return dbResponse;
   }
 
