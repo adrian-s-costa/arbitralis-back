@@ -1,73 +1,46 @@
 <p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="200" alt="Nest Logo" /></a>
+  <a href="http://nestjs.com/" target="blank"><img src="https://res.cloudinary.com/dmo7nzytn/image/upload/v1687912863/308830962_436245725278167_5731677229795523086_n_n9g23c.png" width="300" alt="Arbitralis Logo" /></a>
 </p>
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
+# Descrição
+Este repositório contém o back-end da API de clima/tempo desenvolvida para o teste técnico da empresa Arbitralis. O back-end é responsável por fornecer os dados meteorológicos solicitados pelos usuários estabelecendo conexões com outras APIs, gerenciar a autenticação dos mesmos e mediação para o armazenamento dos dados no banco de dados PostgreSQL.
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://coveralls.io/github/nestjs/nest?branch=master" target="_blank"><img src="https://coveralls.io/repos/github/nestjs/nest/badge.svg?branch=master#9" alt="Coverage" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+## Funcionalidades
+- Consultar o clima atual de uma determinada cidade atráves da comunicação com a API openWeatherMap e API Geocoding do Google 🖥 <br>
+- Autenticação utilizando JSON Web Token (JWT).
+- Armazenamento de dados no banco de dados PostgreSQL.
 
-## Description
+## Tecnologias Utilizadas
+- Framework: Nest.js
+- Biblioteca de validação: JSON Web Token (JWT)
+- Banco de Dados: PostgreSQL
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
-
-## Installation
-
+## Rodando localmente
+1. Clone o repositório
 ```bash
-$ npm install
+~$ git clone https://github.com/adrian-s-costa/arbitralis-back.git
 ```
-
-## Running the app
-
+3. Dentro do diretório onde o repositório foi clonado, instale as dependências
 ```bash
-# development
-$ npm run start
-
-# watch mode
-$ npm run start:dev
-
-# production mode
-$ npm run start:prod
+~$ npm i
 ```
-
-## Test
-
+4. Recrie o banco de dados em sua máquina através do arquivo `arbitrales-dump.sql`
+5. Crie um aquivo `.env` na raíz do projeto e o configure de acordo com suas particularidades seguindo o padrão do `.env.example` para os nomes das variáveis de ambiente
 ```bash
-# unit tests
-$ npm run test
-
-# e2e tests
-$ npm run test:e2e
-
-# test coverage
-$ npm run test:cov
+  PORT=porta_em_que_API_vai_rodar
+  JWT_SECRET=qualquer_valor_server
+  OPEN_WEATHER_API_KEY=744e9bd530130dda6f010c9d2f151042
+  PG_USER=nome_de_usuário_do_pgAdmin_ou_psql
+  PG_PASSWORD=senha_dessa_conta_acima
+  PG_DATABASE=nome_do_banco
 ```
+As chaves de API podem ser replicadas tranquilamente, foram expostas a fim de diminuir a complexidade de rodar o projeto 
+6. Execute o comando `npm run start`
+```bash
+~$ npm run start
+```
+Pronto! A API estará rodando em `http://localhost:[PORTA-ESCOLHIDA]` 😊 
+(Não esqueça que essa URL que precisa ser colocada no config.js do front)
 
-## Support
-
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
-
-## Stay in touch
-
-- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
-
-## License
-
-Nest is [MIT licensed](LICENSE).
+# Licença
+Este projeto está licenciado sob a licença MIT. Consulte o arquivo LICENSE para obter mais informações.
