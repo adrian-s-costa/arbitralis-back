@@ -7,13 +7,15 @@ Este repositório contém o back-end da API de clima/tempo desenvolvida para o t
 
 ## Funcionalidades
 - Consultar o clima atual de uma determinada cidade atráves da comunicação com a API openWeatherMap e API Geocoding do Google 🖥 <br>
-- Autenticação utilizando JSON Web Token (JWT).
-- Armazenamento de dados no banco de dados PostgreSQL.
+- Dados atualizados a cada 15 minutos 🕛
+- Autenticação utilizando JSON Web Token (JWT)
+- Armazenamento de dados no banco de dados PostgreSQL
 
 ## Tecnologias Utilizadas
 - Framework: Nest.js
 - Biblioteca de validação: JSON Web Token (JWT)
 - Banco de Dados: PostgreSQL
+- Biblioteca Bcrypt para encriptção de senhas
 
 ## Rodando localmente
 1. Clone o repositório
