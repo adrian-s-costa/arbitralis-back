@@ -78,7 +78,7 @@ export class WeatherService implements OnApplicationBootstrap{
         graus = Math.round(res.data.main.temp) + "°C";
         icon = res.data.weather[0].icon;
         cidade = address;
-        umidade = res.data.main.humidity + "% de humidade";
+        umidade = res.data.main.humidity + "% de umidade";
       })
       .catch((err)=>{
         console.log(err);
