@@ -30,7 +30,7 @@ Este repositório contém o back-end da API de clima/tempo desenvolvida para o t
 4. Crie um aquivo `.env` na raíz do projeto e o configure de acordo com suas particularidades seguindo o padrão do `.env.example` para os nomes das variáveis de ambiente 
 ```bash
   PORT=porta_em_que_API_vai_rodar
-  JWT_SECRET=qualquer_valor_server
+  JWT_SECRET=qualquer_valor_serve
   OPEN_WEATHER_API_KEY=744e9bd530130dda6f010c9d2f151042
   PG_USER=nome_de_usuário_do_pgAdmin_ou_psql
   PG_PASSWORD=senha_dessa_conta_acima
